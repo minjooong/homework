@@ -4,34 +4,34 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: "Gothic A1", sans-serif;
 }
 a {
     text-decoration: none;
     color: black;
 }
-ul{
+ul {
     list-style: none;
 }
-.container{
+.container {
     width: 70vw;
     margin: 0 auto;
 }
 
 /* nav */
-.nv{
-    background-color: #A0DBF2;
+.nv {
+    background-color: #a0dbf2;
 }
-.nv h1{
+.nv h1 {
     font-size: xx-large;
     margin: 0;
     padding: 20px;
 }
-.nav-menu{
+.nav-menu {
     float: right;
     padding-bottom: 10px;
 }
-.nav-list{
+.nav-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -47,72 +47,72 @@ nav::after {
 }
 
 /* header */
-.hd{
+.hd {
     position: relative;
     height: 25vw;
     text-align: center;
 }
-.hd-title{
+.hd-title {
     font-size: 6vw;
     margin-top: 0;
     margin-bottom: 5vw;
     padding-top: 5vw;
 }
-.hd-content{
+.hd-content {
     font-size: 2vw;
 }
-.hd::before{
-    content:"";
-    display:block;
+.hd::before {
+    content: "";
+    display: block;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-    height:100%;
+    height: 100%;
     opacity: 0.5;
     background-image: url(./beenzino.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 }
-.hd .container{
+.hd .container {
     position: relative;
 }
 
 /* section */
-.sec{
+.sec {
     text-align: center;
     padding-top: 20px;
-    background-color:#F2C84B;
+    background-color: #f2c84b;
 }
-.sec .artcl{
+.sec .artcl {
     float: left;
     width: 20vw;
     margin-right: 5vw;
 }
-.sec .artcl:last-child{
-    margin-right:0;
+.sec .artcl:last-child {
+    margin-right: 0;
 }
-.sec .artcl img{
+.sec .artcl img {
     width: 100%;
 }
-.card-img{
+.card-img {
     overflow: hidden;
     width: 20vw;
     height: 20vw;
 }
-.sec::after{
+.sec::after {
     content: "";
     display: block;
-    clear:both;
+    clear: both;
 }
 
 /* footer */
-.ft{
+.ft {
     text-align: right;
-    background-color: #A6877C;
+    background-color: #a6877c;
 }
-.ft p{
+.ft p {
     margin: 0;
-    padding:5px;
+    padding: 5px;
 }
