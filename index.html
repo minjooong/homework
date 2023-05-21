@@ -4,17 +4,40 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Converter</title>
+        <title>Document</title>
 
         <meta property="og:url" content="https://minjooong.github.io/homework/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="./SC.png" />
-        <meta property="og:title" content="Super Converter" />
+        <meta property="og:title" content="HomeWork" />
         <meta property="og:description" content="김민중의 이번 주 과제입니다:D" />
+        <meta property="og:site_name" content="배경색 바꾸기" />
     </head>
     <body>
         <div style="text-align: center" id="root"></div>
     </body>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            border-color: white;
+            border-radius: 5px;
+
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -22,7 +45,7 @@
     <script type="text/babel">
         function Btn({ text, onClick }) {
             return (
-                <button onClick={onClick} style={{ backgroundColor: "tomato", color: "white", padding: "10px 20px", margin: "10px", border: 0, borderRadius: 10 }}>
+                <button onClick={onClick} class="btn">
                     {text}
                 </button>
             );
@@ -31,84 +54,22 @@
             text: PropTypes.string.isRequired,
             onclick: PropTypes.func,
         };
-        function MinutesToHours() {
-            const [amount, setAmount] = React.useState(0);
-            const onChange = () => {
-                setAmount(event.target.value);
-            };
-            const [flipped, setFlipped] = React.useState(false);
-            const onFlip = () => {
-                reset();
-                setFlipped((current) => !current);
-            };
-            const reset = () => {
-                setAmount(0);
-            };
+        function BgFlip() {
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                document.body.style.background = color;
+            }
             return (
-                <div>
-                    <h2>Minutes to Hours</h2>
-                    <label htmlFor="minutes">Minutes </label>
-                    <input id="minutes" value={flipped ? amount * 60 : amount} onChange={onChange} type="number" placeholder="Minutes" disabled={flipped} />
-                    <br />
-                    <br />
-                    <label htmlFor="hours">Hours </label>
-                    <input id="hours" value={flipped ? amount : amount / 60} onChange={onChange} type="number" placeholder="Hours" disabled={!flipped} />
-                    <br />
-                    <br />
-                    <Btn text="Reset" onClick={reset} />
-                    <Btn text="Flip" onClick={onFlip} />
-                </div>
-            );
-        }
-        function KmToMiles() {
-            const [amount, setAmount] = React.useState(0);
-            const onChange = () => {
-                setAmount(event.target.value);
-            };
-            const [flipped, setFlipped] = React.useState(false);
-            const onFlip = () => {
-                reset();
-                setFlipped((current) => !current);
-            };
-            const reset = () => {
-                setAmount(0);
-            };
-            return (
-                <div>
-                    <h2>Km to Miles</h2>
-                    <label htmlFor="km">Km </label>
-                    <input id="km" value={flipped ? amount / 0.621371 : amount} onChange={onChange} type="number" placeholder="Km" disabled={flipped} />
-                    <br />
-                    <br />
-                    <label htmlFor="miles">Miles </label>
-                    <input id="miles" value={flipped ? amount : amount * 0.621371} onChange={onChange} type="number" placeholder="Miles" disabled={!flipped} />
-                    <br />
-                    <br />
-
-                    <Btn text="Reset" onClick={reset} />
-                    <Btn text="Flip" onClick={onFlip} />
-                </div>
-            );
-        }
-        function App() {
-            const [index, setIndex] = React.useState("0");
-            const onSelect = (event) => {
-                setIndex(event.target.value);
-            };
-            return (
-                <div>
-                    <h1 style={{ color: "tomato" }}>Super Converter</h1>
-                    <hr />
-                    <select value={index} onChange={onSelect}>
-                        <option value="0">Minutes & Hours</option>
-                        <option value="1">Km & Miles</option>
-                    </select>
-                    {index === "0" ? <MinutesToHours /> : null}
-                    {index === "1" ? <KmToMiles /> : null}
+                <div class="center">
+                    <Btn text="눌러봐!" onClick={getRandomColor} />
                 </div>
             );
         }
         const root = document.getElementById("root");
-        ReactDOM.render(<App />, root);
+        ReactDOM.render(<BgFlip />, root);
     </script>
 </html>
