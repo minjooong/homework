@@ -1,38 +1,25 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Detail() {
-    const [movieData, setMovieData] = useState(null);
+    const { id } = useParams();
+    const [movie, setMovie] = useState(null);
+
+    const getMovie = async () => {
+        const json = await (await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)).json();
+        setMovie(json);
+    };
 
     useEffect(() => {
-        const getMovie = async () => {
-            try {
-                const response = await fetch("https://yts.mx/api/v2/movie_details.json?movie_id=52776");
-                if (!response.ok) {
-                    console.log(`An error occurred: ${response.status}`);
-                    return;
-                }
-                const json = await response.json();
-                setMovieData(json.data.movie);
-            } catch (error) {
-                console.log(`An error occurred while fetching the data: ${error}`);
-            }
-        };
         getMovie();
     }, []);
 
-    if (!movieData) {
-        return <p>Loading...</p>;
-    }
-
     return (
-        <div>
-            <h1>{movieData.title}</h1>
-            <p>Year: {movieData.year}</p>
-            <p>Rating: {movieData.rating}</p>
-            <p>Runtime: {movieData.runtime} minutes</p>
-            <p>Genres: {movieData.genres.join(", ")}</p>
-            <img src={movieData.medium_cover_image} alt={movieData.title} />
-        </div>
+        <>
+            <h1>{movie ? movie.data.movie.title : "Loading..."}</h1>
+            <p>{movie ? `genres : ${movie.data.movie.genres}` : ""}</p>
+            <p>{movie ? movie.data.movie.description_full : ""}</p>
+        </>
     );
 }
 

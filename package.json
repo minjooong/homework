@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "gh-pages": "^5.0.0",
+    "git-pages": "^0.8.1",
     "prop-types": "^15.8.1",
     "react-router-dom": "^5.3.4"
   }
